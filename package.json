@@ -1,0 +1,60 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "material-table": "^1.67.1",
+    "moment": "^2.27.0",
+    "notistack": "^0.9.17",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:all": "npm-run-all build:tailwind --parallel watch:tailwind start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "watch:tailwind": "chokidar 'public/**/*.css' 'public/**/*.scss' --ignore public/tailwind.output.css -c 'npm run build:tailwind'",
+    "build:tailwind": "tailwindcss build public/tailwind.css -o public/tailwind.output.css",
+    "prestart": "npm run build:tailwind",
+    "prebuild": "npm run build:tailwind",
+    "lint": "eslint . --ext .jsx",
+    "lint-and-fix": "eslint . --ext .js --fix",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write",
+    "prettier-watch": "onchange 'src/**/*.js' -- prettier --write {{changed}}"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "chokidar-cli": "^2.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "tailwindcss": "^1.5.2"
+  }
+}
