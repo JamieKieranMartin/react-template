@@ -10,7 +10,7 @@ const Component = (props) => {
 
   if (loading) return <LinearProgress />;
 
-  if (error) return <div>{JSON.stringify(error)}</div>;
+  // if (error) return <div>{JSON.stringify(error)}</div>;
 
   return (
     <Grid container spacing={2}>
@@ -38,7 +38,7 @@ const Component = (props) => {
               field: 'name'
             }
           ]}
-          data={data}
+          data={data || []}
           options={{
             maxBodyHeight: '100%',
             addRowPosition: 'first',
