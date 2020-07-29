@@ -1,29 +1,29 @@
 import { useState, useEffect } from 'react';
 import { axiosInstance } from './axios';
 
-export const useDataObject = (props) => {
+export const useApi = (props) => {
   const [loading, setLoading] = useState(true);
-  const [object, setObject] = useState([]);
-  const [error, setErr] = useState(false);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
   const { refresh } = props;
 
   useEffect(() => {
     setLoading(true);
     getAPI(props)
-      .then(setObject)
-      .catch(setErr)
+      .then(setData)
+      .catch(setError)
       .finally(() => setLoading(false));
   }, [refresh]);
 
   return {
     loading,
-    object,
+    data,
     error
   };
 };
 
-const getAPI = (props) =>
+const getAPI = ({ url, params }) =>
   axiosInstance({
-    url: `${props.route}`,
-    params: props.params
+    url,
+    params
   }).then((res) => res.data);

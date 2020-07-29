@@ -3,10 +3,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import {
-  Dashboard,
-  Settings
-} from '@material-ui/icons';
+import { Dashboard, Settings, Input } from '@material-ui/icons';
 
 export const mainListItems = (
   <div>
@@ -15,6 +12,13 @@ export const mainListItems = (
         <Dashboard />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
+    </ListItemLink>
+
+    <ListItemLink href="/form">
+      <ListItemIcon>
+        <Input />
+      </ListItemIcon>
+      <ListItemText primary="Form" />
     </ListItemLink>
   </div>
 );

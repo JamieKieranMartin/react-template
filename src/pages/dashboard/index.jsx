@@ -1,21 +1,23 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { tableIcons } from '../../core/theme';
 import MaterialTable from 'material-table';
-import { Grid, Button } from '@material-ui/core';
-import { Provider, Context } from '../../context/provisioning_site';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import { Grid, Button, LinearProgress } from '@material-ui/core';
+import { Provider, Context } from '../../context/_example';
 
 const Component = (props) => {
-  const { loading, data, api, refresh } = useContext(Context);
+  const { loading, data, api, error, refresh } = useContext(Context);
 
   if (loading) return <LinearProgress />;
+
+  if (error) return <div>{JSON.stringify(error)}</div>;
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={6}>
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Button variant="outlined" onClick={() => props.history.goBack()}>
+            <Button variant="outlined" onClick={props.history.goBack}>
               Back
             </Button>
           </Grid>
@@ -76,9 +78,9 @@ const Component = (props) => {
                 })
             }
           ]}
-          onRowClick={(event, { id }, togglePanel) =>
-            props.history.push(`/${id}`)
-          }
+          onRowClick={(event, { id }, togglePanel) => {
+            props.history.push(`/${id}`);
+          }}
         />
       </Grid>
     </Grid>
